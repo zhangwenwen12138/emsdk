@@ -1,5 +1,5 @@
 emcc fib.c \
-  -O1 \
+  -O3 \
   -sWASM=1 \
   -sMODULARIZE=1 \
   -s EXPORTED_RUNTIME_METHODS=["cwrap"] \
