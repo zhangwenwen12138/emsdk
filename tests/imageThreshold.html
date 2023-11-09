@@ -72,11 +72,13 @@ fetch('imageThreshold.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.imageThreshold =
-          module.cwrap('imageThreshold',
+        module.then(m =>{
+            functions.imageThreshold = m.cwrap('imageThreshold',
                        null,
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

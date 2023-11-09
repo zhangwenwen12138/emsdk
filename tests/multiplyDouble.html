@@ -25,11 +25,13 @@ fetch('multiplyDouble.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.multiplyDouble =
-          module.cwrap('multiplyDouble',
+        module.then(m =>{
+            functions.multiplyDouble = m.cwrap('multiplyDouble',
                        'number',
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

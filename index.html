@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <title>JavaScript vs WebAssembly easy benchmark</title>
 <style>
 iframe {
@@ -12,6 +13,7 @@ iframe {
   border: 1px solid;
 }
 </style>
+
 </head>
 <body>
 <iframe name="iframe"></iframe>
@@ -36,5 +38,11 @@ JS vs WASM
   <li><a href="tests/videoThreshold.html" target="iframe">VideoThreshold</a></li>
 </ul>
 <a href="https://github.com/takahirox/WebAssembly-benchmark" target="_blank">source code</a>
+<script src="./scripts/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="./scripts/go.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 </body>
 </html>

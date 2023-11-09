@@ -21,11 +21,13 @@ fetch('fib.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.func =
-          module.cwrap('func',
+        module.then(m =>{
+            functions.func = m.cwrap('func',
                        'number',
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

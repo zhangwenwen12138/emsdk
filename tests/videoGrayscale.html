@@ -28,11 +28,13 @@ fetch('imageGrayscale.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.imageGrayscale =
-          module.cwrap('imageGrayscale',
+        module.then(m =>{
+            functions.imageGrayscale = m.cwrap('imageGrayscale',
                        null,
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

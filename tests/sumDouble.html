@@ -25,11 +25,13 @@ fetch('sumDouble.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.sumDouble =
-          module.cwrap('sumDouble',
+        module.then(m =>{
+            functions.sumDouble = m.cwrap('sumDouble',
                        'number',
                        ['number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

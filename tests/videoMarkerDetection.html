@@ -28,8 +28,8 @@ fetch('markerDetection.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.newARDetector =
-          module.cwrap('newARDetector',
+        module.then(m =>{
+            functions.newARDetector = m.cwrap('newARDetector',
                        'number',
                        ['number', 'number']);
         functions.detect =
@@ -40,7 +40,9 @@ fetch('markerDetection.wasm')
           module.cwrap('freeResult',
                        null,
                        ['number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

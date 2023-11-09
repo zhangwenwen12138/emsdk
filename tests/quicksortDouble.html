@@ -37,11 +37,13 @@ fetch('quicksortDouble.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.quicksortDouble =
-          module.cwrap('quicksortDouble',
+        module.then(m =>{
+            functions.quicksortDouble = m.cwrap('quicksortDouble',
                        null,
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

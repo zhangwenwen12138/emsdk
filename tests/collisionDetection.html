@@ -6,6 +6,13 @@ textarea {
   width: 640px;
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 <script src="collisionDetection.js"></script>
 <script id="js_code">
 function jsCollisionDetection(positions, radiuses, res, n) {
@@ -47,15 +54,19 @@ fetch('collisionDetection.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.collisionDetection =
-          module.cwrap('collisionDetection',
+        p.then(m =>{
+            module = m;
+            functions.collisionDetection = m.cwrap('collisionDetection',
                        'number',
                        ['number', 'number',
                         'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
-    module = Module(moduleArgs);
+    var p = Module(moduleArgs);
+
   });
 </script>
 <script id="test_code">
@@ -228,7 +239,7 @@ function loadTextFile(url, callback) {
 
 function putCode(textareaId, code) {
   var textarea = document.getElementById(textareaId);
-  textarea.value = code;
+  textarea.innerHTML = code;
   textarea.setAttribute('rows', code.split('\n').length);
 }
 
@@ -266,7 +277,7 @@ function switchDisplay(div) {
   </div>
   <div>
     <p onclick="switchDisplay(this.parentNode)">- JavaScript code</p>
-    <p><textarea id="js_code_area" readonly></textarea></p>
+    <pre><code id="js_code_area"></code></pre>
   </div>
   <div>
     <p onclick="switchDisplay(this.parentNode)">- WebAssembly C code</p>

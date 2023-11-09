@@ -25,11 +25,13 @@ fetch('multiplyInt.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.multiplyInt =
-          module.cwrap('multiplyInt',
+        module.then(m =>{
+            functions.multiplyInt = m.cwrap('multiplyInt',
                        'number',
                        ['number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

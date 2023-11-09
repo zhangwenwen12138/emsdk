@@ -53,13 +53,15 @@ fetch('imageConvolute.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.imageConvolute =
-          module.cwrap('imageConvolute',
+        module.then(m =>{
+            functions.imageConvolute = m.cwrap('imageConvolute',
                        null,
                        ['number', 'number', 'number',
                         'number', 'number', 'number',
                         'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);

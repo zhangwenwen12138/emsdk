@@ -23,11 +23,13 @@ fetch('multiplyDoubleVec.wasm')
     var moduleArgs = {
       wasmBinary: binary,
       onRuntimeInitialized: function () {
-        functions.multiplyDoubleVec =
-          module.cwrap('multiplyDoubleVec',
+        module.then(m =>{
+            functions.multiplyDoubleVec = m.cwrap('multiplyDoubleVec',
                        null,
                        ['number', 'number', 'number', 'number']);
-        onReady();
+        
+            onReady();
+        });
       }
     };
     module = Module(moduleArgs);
