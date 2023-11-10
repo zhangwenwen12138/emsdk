@@ -1,6 +1,6 @@
 emcc imageConvolute.c \
-  -Os \
+  -O0 \
   -sMODULARIZE=1 \
   -sEXPORTED_RUNTIME_METHODS=cwrap \
-  -sEXPORTED_FUNCTIONS=_imageConvolute \
+  -sEXPORTED_FUNCTIONS=_imageConvolute,_malloc \
   -o imageConvolute.js

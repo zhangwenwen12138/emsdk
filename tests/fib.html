@@ -29,13 +29,14 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
-              functions.fib = m.cwrap('fib', 'number', ['number']);
+            p.then(m => {
+              module = m
+              functions.fib = module.cwrap('fib', 'number', ['number']);
               onReady();
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

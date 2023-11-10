@@ -22,8 +22,8 @@ compiling from source). Basically, that amounts to
 ```
 git clone https://github.com/zhangwenwen12138/emsdk-benchmark.git
 cd emsdk-benchmark
-./emsdk-benchmark install latest
-./emsdk-benchmark activate latest
+./emsdk install latest
+./emsdk activate latest
 source ./emsdk_env.sh
 ./serve.sh
 ```
