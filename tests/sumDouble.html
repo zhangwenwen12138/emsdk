@@ -31,9 +31,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.sumDouble  = module.('sumDouble',
+              functions.sumDouble  = module.cwrap('sumDouble',
                 'number',
                 ['number', 'number']);
 
@@ -41,7 +41,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

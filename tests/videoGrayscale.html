@@ -12,7 +12,7 @@
       width: 640px;
     }
   </style>
-  <script src="https://rawgit.com/mrdoob/three.js/r85/build/three.js"></script>
+  <script src="../scripts/three.min.js"></script>
   <script src="imageGrayscale.js"></script>
   <script id="js_code">
     function jsImageGrayscale(data, width, height) {
@@ -34,9 +34,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.imageGrayscale  = module.('imageGrayscale',
+              functions.imageGrayscale  = module.cwrap('imageGrayscale',
                 null,
                 ['number', 'number', 'number']);
 
@@ -44,7 +44,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

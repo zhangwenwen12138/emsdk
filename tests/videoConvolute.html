@@ -12,7 +12,7 @@
       width: 640px;
     }
   </style>
-  <script src="https://rawgit.com/mrdoob/three.js/r85/build/three.js"></script>
+  <script src="../scripts/three.min.js"></script>
   <script src="imageConvolute.js"></script>
   <script id="js_code">
     function jsImageConvolute(data, data2, width, height,
@@ -59,9 +59,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.imageConvolute  = module.('imageConvolute',
+              functions.imageConvolute  = module.cwrap('imageConvolute',
                 null,
                 ['number', 'number', 'number',
                   'number', 'number', 'number',
@@ -71,7 +71,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

@@ -78,9 +78,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
-              module = m
-              functions.imageThreshold  = module.('imageThreshold',
+            p.then(m => {
+              module = m;
+              functions.imageThreshold = module.cwrap('imageThreshold',
                 null,
                 ['number', 'number', 'number']);
 
@@ -88,7 +88,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

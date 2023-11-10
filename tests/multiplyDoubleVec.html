@@ -29,9 +29,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.multiplyDoubleVec  = module.('multiplyDoubleVec',
+              functions.multiplyDoubleVec  = module.cwrap('multiplyDoubleVec',
                 null,
                 ['number', 'number', 'number', 'number']);
 
@@ -39,7 +39,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

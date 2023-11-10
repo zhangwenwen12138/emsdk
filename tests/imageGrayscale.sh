@@ -1,6 +1,6 @@
 emcc imageGrayscale.c \
-  -Os \
+  -O3 \
   -sMODULARIZE=1 \
   -sEXPORTED_RUNTIME_METHODS=cwrap \
-  -sEXPORTED_FUNCTIONS=_imageGrayscale \
+  -sEXPORTED_FUNCTIONS=_imageGrayscale,_malloc,_free \
   -o imageGrayscale.js

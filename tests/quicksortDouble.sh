@@ -1,8 +1,7 @@
 emcc quicksortDouble.c \
-  -Os \
-  
+  -O3 \
   -sMODULARIZE=1 \
-  
+  -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_RUNTIME_METHODS=cwrap \
-  -sEXPORTED_FUNCTIONS=_quicksortDouble \
+  -sEXPORTED_FUNCTIONS=_quicksortDouble,_malloc,_free \
   -o quicksortDouble.js

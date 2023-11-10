@@ -43,9 +43,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.quicksortDouble  = module.('quicksortDouble',
+              functions.quicksortDouble  = module.cwrap('quicksortDouble',
                 null,
                 ['number', 'number', 'number']);
 
@@ -53,7 +53,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

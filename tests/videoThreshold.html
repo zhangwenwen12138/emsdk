@@ -12,7 +12,7 @@
       width: 640px;
     }
   </style>
-  <script src="https://rawgit.com/mrdoob/three.js/r85/build/three.js"></script>
+  <script src="../scripts/three.min.js"></script>
   <script src="imageThreshold.js"></script>
   <script id="js_code">
     // from https://pdfs.semanticscholar.org/8d74/418ec3c4e2ff45b72e723ac0fbe5fcd58620.pdf
@@ -79,9 +79,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.imageThreshold  = module.('imageThreshold',
+              functions.imageThreshold  = module.cwrap('imageThreshold',
                 null,
                 ['number', 'number', 'number']);
 
@@ -89,7 +89,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

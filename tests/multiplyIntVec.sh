@@ -1,8 +1,7 @@
 emcc multiplyIntVec.c \
-  -Os \
-  
+  -O3 \
   -sMODULARIZE=1 \
-  
+  -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_RUNTIME_METHODS=cwrap \
-  -sEXPORTED_FUNCTIONS=_multiplyIntVec \
+  -sEXPORTED_FUNCTIONS=_multiplyIntVec,_malloc,_free \
   -o multiplyIntVec.js

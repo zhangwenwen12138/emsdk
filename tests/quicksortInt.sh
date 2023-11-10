@@ -1,8 +1,6 @@
 emcc quicksortInt.c \
-  -Os \
-  
+  -O3 \
   -sMODULARIZE=1 \
-  
   -sEXPORTED_RUNTIME_METHODS=cwrap \
-  -sEXPORTED_FUNCTIONS=_quicksortInt \
+  -sEXPORTED_FUNCTIONS=_quicksortInt,_malloc,_free \
   -o quicksortInt.js

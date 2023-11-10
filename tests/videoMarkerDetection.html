@@ -12,8 +12,8 @@
       width: 640px;
     }
   </style>
-  <script src="https://rawgit.com/mrdoob/three.js/r85/build/three.js"></script>
-  <script src="markerDetection.js"></script>
+  <script src="../scripts/three.min.js"></script>
+  <script src="videoMarkerDetection.js"></script>
   <script src="../js/cv.js"></script>
   <script src="../js/aruco.js"></script>
   <script id="js_code">
@@ -27,16 +27,16 @@
   </script>
   <script id="ws_instantiate_code">
     var module, functions = {};
-    fetch('markerDetection.wasm')
+    fetch('videoMarkerDetection.wasm')
       .then(response => response.arrayBuffer())
       .then(buffer => new Uint8Array(buffer))
       .then(binary => {
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
+            p.then(m => {
               module = m
-              functions.newARDetector  = module.('newARDetector',
+              functions.newARDetector  = module.cwrap('newARDetector',
                 'number',
                 ['number', 'number']);
               functions.detect =
@@ -52,7 +52,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">
@@ -266,11 +266,11 @@
       putCode('test_code_area', document.getElementById('test_code').text.trim());
       putCode('js_code_area', document.getElementById('js_code').text.trim());
 
-      loadTextFile('markerDetection.cpp', function (text) {
+      loadTextFile('videoMarkerDetection.cpp', function (text) {
         putCode('ws_code_area', text.trim(), 'c');
       });
 
-      loadTextFile('markerDetection.sh', function (text) {
+      loadTextFile('videoMarkerDetection.sh', function (text) {
         putCode('sh_code_area', text.trim(), 'sh');
       });
 
