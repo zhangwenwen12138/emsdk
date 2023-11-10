@@ -33,16 +33,16 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
-              functions.imageGrayscale = m.cwrap('imageGrayscale',
+            p.then(m => {
+              module = m
+              functions.imageGrayscale = module.cwrap('imageGrayscale',
                 null,
                 ['number', 'number', 'number']);
-
               onReady();
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

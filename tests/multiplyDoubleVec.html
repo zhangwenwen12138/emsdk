@@ -30,7 +30,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.multiplyDoubleVec = m.cwrap('multiplyDoubleVec',
+              module = m
+              functions.multiplyDoubleVec  = module.('multiplyDoubleVec',
                 null,
                 ['number', 'number', 'number', 'number']);
 

@@ -32,7 +32,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.sumInt = m.cwrap('sumInt',
+              module = m
+              functions.sumInt  = module.('sumInt',
                 'number',
                 ['number', 'number']);
 

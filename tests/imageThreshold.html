@@ -79,7 +79,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.imageThreshold = m.cwrap('imageThreshold',
+              module = m
+              functions.imageThreshold  = module.('imageThreshold',
                 null,
                 ['number', 'number', 'number']);
 

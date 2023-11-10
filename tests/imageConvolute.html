@@ -58,8 +58,9 @@
         var moduleArgs = {
           wasmBinary: binary,
           onRuntimeInitialized: function () {
-            module.then(m => {
-              functions.imageConvolute = m.cwrap('imageConvolute',
+            p.then(m => {
+              module = m
+              functions.imageConvolute = module.cwrap('imageConvolute',
                 null,
                 ['number', 'number', 'number',
                   'number', 'number', 'number',
@@ -69,7 +70,7 @@
             });
           }
         };
-        module = Module(moduleArgs);
+        var p = Module(moduleArgs);
       });
   </script>
   <script id="test_code">

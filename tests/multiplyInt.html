@@ -32,7 +32,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.multiplyInt = m.cwrap('multiplyInt',
+              module = m
+              functions.multiplyInt  = module.('multiplyInt',
                 'number',
                 ['number', 'number', 'number']);
 

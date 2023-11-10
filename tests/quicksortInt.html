@@ -44,7 +44,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.quicksortInt = m.cwrap('quicksortInt',
+              module = m
+              functions.quicksortInt  = module.('quicksortInt',
                 null,
                 ['number', 'number', 'number']);
 

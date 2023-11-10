@@ -60,7 +60,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.imageConvolute = m.cwrap('imageConvolute',
+              module = m
+              functions.imageConvolute  = module.('imageConvolute',
                 null,
                 ['number', 'number', 'number',
                   'number', 'number', 'number',

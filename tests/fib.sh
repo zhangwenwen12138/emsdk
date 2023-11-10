@@ -1,5 +1,5 @@
 emcc fib.c \
-  -O0 \
+  -O3 \
   -sMODULARIZE=1 \
   -sEXPORTED_RUNTIME_METHODS=cwrap \
   -sEXPORTED_FUNCTIONS=_fib \

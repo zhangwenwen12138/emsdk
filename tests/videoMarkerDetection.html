@@ -35,7 +35,8 @@
           wasmBinary: binary,
           onRuntimeInitialized: function () {
             module.then(m => {
-              functions.newARDetector = m.cwrap('newARDetector',
+              module = m
+              functions.newARDetector  = module.('newARDetector',
                 'number',
                 ['number', 'number']);
               functions.detect =
