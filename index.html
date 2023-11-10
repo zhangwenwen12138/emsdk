@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-<title>JavaScript vs WebAssembly easy benchmark</title>
-<style>
-iframe {
-  height: 97%;
-  width: 80%;;
-  margin-left: 250px;
-  padding: 0;
-  position: absolute;
-  border: 1px solid;
-}
-</style>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <title>JavaScript vs WebAssembly easy benchmark</title>
+  <style>
+    iframe {
+      height: 97%;
+      width: 75%;
+      margin-left: 300px;
+      padding: 0;
+      position: absolute;
+      border: 1px solid;
+    }
+  </style>
 
 </head>
+
 <body>
-<iframe name="iframe"></iframe>
-JS vs WASM
-<ul>
-  <li><a href="tests/collisionDetection.html" target="iframe">collisionDetection</a></li>
-  <li><a href="tests/fib.html" target="iframe">Fibonacci</a></li>
-  <li><a href="tests/imageConvolute.html" target="iframe">ImageConvolute</a></li>
-  <li><a href="tests/imageGrayscale.html" target="iframe">ImageGrayscale</a></li>
-  <li><a href="tests/imageThreshold.html" target="iframe">ImageThreshold</a></li>
-  <li><a href="tests/multiplyInt.html" target="iframe">MultiplyInt</a></li>
-  <li><a href="tests/multiplyDouble.html" target="iframe">MultiplyDouble</a></li>
-  <li><a href="tests/multiplyIntVec.html" target="iframe">MultiplyIntVec</a></li>
-  <li><a href="tests/multiplyDoubleVec.html" target="iframe">MultiplyDoubleVec</a></li>
-  <li><a href="tests/quicksortInt.html" target="iframe">QuicksortInt</a></li>
-  <li><a href="tests/quicksortDouble.html" target="iframe">QuicksortDouble</a></li>
-  <li><a href="tests/sumInt.html" target="iframe">SumInt</a></li>
-  <li><a href="tests/sumDouble.html" target="iframe">SumDouble</a></li>
-  <li><a href="tests/videoConvolute.html" target="iframe">VideoConvolute</a></li>
-  <li><a href="tests/videoGrayscale.html" target="iframe">VideoGrayscale</a></li>
-  <li><a href="tests/videoMarkerDetection.html" target="iframe">VideoMarkerDetection</a></li>
-  <li><a href="tests/videoThreshold.html" target="iframe">VideoThreshold</a></li>
-</ul>
-<a href="https://github.com/takahirox/WebAssembly-benchmark" target="_blank">source code</a>
-<script src="./scripts/highlight.min.js"></script>
-
-<!-- and it's easy to individually load additional languages -->
-<script src="./scripts/go.min.js"></script>
-
-<script>hljs.highlightAll();</script>
+  <iframe name="iframe"></iframe>
+  JS vs WASM
+  <ul>
+    <li><a href="tests/fib.html" target="iframe">斐波那契 Fibonacci</a></li>
+    <li><a href="tests/collisionDetection.html" target="iframe">碰撞检测 collisionDetection</a></li>
+    <li><a href="tests/imageConvolute.html" target="iframe">图片卷积 ImageConvolute</a></li>
+    <li><a href="tests/imageGrayscale.html" target="iframe">图片灰度 ImageGrayscale</a></li>
+    <li><a href="tests/imageThreshold.html" target="iframe">图片阈值 ImageThreshold</a></li>
+    <li><a href="tests/multiplyInt.html" target="iframe">MultiplyInt</a></li>
+    <li><a href="tests/multiplyDouble.html" target="iframe">MultiplyDouble</a></li>
+    <li><a href="tests/multiplyIntVec.html" target="iframe">MultiplyIntVec</a></li>
+    <li><a href="tests/multiplyDoubleVec.html" target="iframe">MultiplyDoubleVec</a></li>
+    <li><a href="tests/quicksortInt.html" target="iframe">QuicksortInt</a></li>
+    <li><a href="tests/quicksortDouble.html" target="iframe">QuicksortDouble</a></li>
+    <li><a href="tests/sumInt.html" target="iframe">SumInt</a></li>
+    <li><a href="tests/sumDouble.html" target="iframe">SumDouble</a></li>
+    <li><a href="tests/videoConvolute.html" target="iframe">VideoConvolute</a></li>
+    <li><a href="tests/videoGrayscale.html" target="iframe">VideoGrayscale</a></li>
+    <li><a href="tests/videoMarkerDetection.html" target="iframe">VideoMarkerDetection</a></li>
+    <li><a href="tests/videoThreshold.html" target="iframe">VideoThreshold</a></li>
+  </ul>
+  <a href="https://github.com/zhangwenwen12138/emsdk-benchmark" target="_blank">source code</a>
 </body>
+
 </html>
